@@ -1,6 +1,12 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
+// Bilder laden
+const robotImg = new Image();
+robotImg.src = 'robot.png';
+const horseImg = new Image();
+horseImg.src = 'pferd.png';
+
 const robot = {
     x: canvas.width / 2 - 20,
     y: canvas.height - 80,
@@ -20,10 +26,7 @@ let horsesSpawned = 0;
 let horsesTotal = 20;
 
 function drawRobot() {
-    ctx.fillStyle = robot.color;
-    ctx.fillRect(robot.x, robot.y, robot.w, robot.h);
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(robot.x + 10, robot.y + 10, 20, 20); // Kopf
+    ctx.drawImage(robotImg, robot.x, robot.y, robot.w, robot.h);
 }
 
 function drawBullet(bullet) {
@@ -32,10 +35,7 @@ function drawBullet(bullet) {
 }
 
 function drawHorse(horse) {
-    ctx.fillStyle = '#a52a2a';
-    ctx.fillRect(horse.x, horse.y, horse.w, horse.h);
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(horse.x + 5, horse.y + 5, 20, 10); // Kopf
+    ctx.drawImage(horseImg, horse.x, horse.y, horse.w, horse.h);
 }
 
 function spawnHorse() {
